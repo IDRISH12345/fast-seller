@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fast Seller</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+</head>
+<body>
+  <!-- Top Search Bar -->
+  <div class="top-bar">
+    <input type="text" placeholder="Search Property..." />
+    <i class="fas fa-search search-icon"></i>
+  </div>
+
+  <!-- Text Card -->
+  <div class="text-card">
+    <h2>Welcome To Fast Seller!</h2>
+    <p>Find the best properties in your area</p>
+  </div>
+
+  <!-- Menu Icons -->
+  <div class="menu">
+    <div class="menu-item" onclick="openCard()">
+      <img src="buy.png" alt="Buy" />
+      <p>Buy/Sale</p>
+    </div>
+    <div class="menu-item">
+      <img src="construction.png" alt="Construction" />
+      <p>Construction</p>
+    </div>
+  </div>
+
+  <!-- Hidden Card -->
+  <div id="buyCard" class="card" style="display:none;">
+    <span class="close-btn" onclick="closeCard()">&#10005;</span>
+    <h2>Available Properties</h2>
+
+    <div class="property-list" id="propertyList">
+      <div class="property-item">
+        <img src="plot1.jpeg" alt="Property" onclick="openGridGallery(1)" />
+        <div class="property-details">
+          <div class="property-text">
+            <div class="property-name">Building Name</div>
+            <div class="property-price">₹1,50,00,000</div>
+            <div class="property-address">Address here</div>
+          </div>
+          <div class="property-buttons">
+            <button class="book-btn">Book Now</button>
+            <a
+              href="https://wa.me/917409979678"
+              class="whatsapp-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRID GALLERY POPUP -->
+  <div id="gridGallery" class="grid-gallery">
+    <span class="close-btn" onclick="closeGridGallery()">×</span>
+    <div class="grid-container" id="gridContainer"></div>
+  </div>
+
+  <!-- FULLSCREEN SINGLE IMAGE VIEW -->
+  <div id="fullImageView" class="full-image-view">
+    <span class="close-btn" onclick="closeFullImage()">×</span>
+    <img id="fullImage" src="" alt="Full View" />
+    <button class="gallery-prev" onclick="prevImage()">‹</button>
+    <button class="gallery-next" onclick="nextImage()">›</button>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <i class="fas fa-home" id="home-btn"></i>
+    <i class="fas fa-video" id="videoBtn"></i>
+    <i class="fas fa-plus" id="plusBtn"></i>
+
+    <a href="tel:+917409979678" class="call-nav-link">
+      <i class="fas fa-phone"></i>
+    </a>
+    <a
+      href="https://wa.me/917409979678"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="whatsapp-nav-link"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- Video List Popup -->
+  <div id="videoListPopup" class="video-list-popup" style="display:none;">
+    <span class="close-btn" onclick="closeVideoList()">&#10005;</span>
+    <h2>Videos</h2>
+    <div class="video-list-container">
+      <button onclick="prevVideo()" class="video-nav-btn">&#8592;</button>
+      <div class="video-list" id="videoList">
+        <!-- Video thumbnails inserted here -->
+      </div>
+      <button onclick="nextVideo()" class="video-nav-btn">&#8594;</button>
+    </div>
+    <div id="videoPlayerContainer" class="video-player-container">
+      <video id="videoPlayer" width="100%" controls>
+        <source src="" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <!-- Upload Form Popup -->
+  <div id="uploadPopup" class="upload-popup" style="display:none;">
+    <span class="close-btn" onclick="closeUploadPopup()">&#10005;</span>
+    <h2>Add New Property</h2>
+    <form id="uploadForm">
+      <label>
+        Property Images:
+        <div
+          style="
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-top: 4px;
+            margin-bottom: 15px;
+          "
+        >
+          <input
+            type="file"
+            id="propertyImages"
+            accept="image/*"
+            multiple
+            style="flex: 1"
+          />
+          <button
+            type="button"
+            id="addMoreImagesBtn"
+            class="book-btn"
+            style="flex: none; padding: 6px 12px"
+          >
+            +
+          </button>
+        </div>
+      </label>
+
+      <div
+        id="multiImagePreview"
+        style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px"
+      ></div>
+
+      <label>
+        Building Name:
+        <input
+          type="text"
+          id="propertyName"
+          required
+          placeholder="Enter building name"
+        />
+      </label>
+      <br />
+      <label>
+        Price (₹):
+        <input
+          type="number"
+          id="propertyPrice"
+          required
+          placeholder="Enter price"
+        />
+      </label>
+      <br />
+      <label>
+        Address:
+        <input
+          type="text"
+          id="propertyAddress"
+          required
+          placeholder="Enter address"
+        />
+      </label>
+      <br /><br />
+      <button type="submit" class="book-btn">Add Property</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
